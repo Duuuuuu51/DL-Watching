@@ -73,6 +73,11 @@
             </dependency>
             <dependency>
                 <groupId>io.grpc</groupId>
+                <artifactId>grpc-api</artifactId>
+                <version>${grpc.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.grpc</groupId>
                 <artifactId>grpc-stub</artifactId>
                 <version>${grpc.version}</version>
             </dependency>
@@ -142,13 +147,7 @@
                 <version>${assertj.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>ch.qos.logback</groupId>
-                <artifactId>logback-classic</artifactId>
-                <version>1.5.6</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
+<dependency>
                 <groupId>io.github.dlwatching</groupId>
                 <artifactId>dl-watching-proto</artifactId>
                 <version>${project.version}</version>
