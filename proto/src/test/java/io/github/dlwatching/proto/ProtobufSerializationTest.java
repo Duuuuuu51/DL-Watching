@@ -30,6 +30,7 @@ class ProtobufSerializationTest {
         assertThat(deserialized.getThreadId()).isEqualTo(1001L);
         assertThat(deserialized.getThreadName()).isEqualTo("vt-1001");
         assertThat(deserialized.getCarrierThread()).isEqualTo("ForkJoinPool-1-worker-1");
+        assertThat(deserialized.getCaller()).isNotNull();
         assertThat(deserialized.getCaller().getClassName()).isEqualTo("com.example.MyService");
         assertThat(deserialized.getCaller().getMethodName()).isEqualTo("processOrder");
         assertThat(deserialized.getCaller().getLineNumber()).isEqualTo(42);

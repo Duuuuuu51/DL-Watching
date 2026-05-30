@@ -4,6 +4,8 @@ target/
 *.war
 .idea/
 *.iml
+*.ipr
+*.iws
 .DS_Store
 Thumbs.db
 *.log

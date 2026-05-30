@@ -147,7 +147,7 @@
                 <version>${assertj.version}</version>
                 <scope>test</scope>
             </dependency>
-<dependency>
+            <dependency>
                 <groupId>io.github.dlwatching</groupId>
                 <artifactId>dl-watching-proto</artifactId>
                 <version>${project.version}</version>
