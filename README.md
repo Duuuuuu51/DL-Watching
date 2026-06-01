@@ -54,6 +54,4 @@ dl-watching/
 
 Apache License 2.0
 
-## Author / 作者
 
-Duuuuuu <1617714380@qq.com>

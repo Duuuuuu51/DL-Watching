@@ -10,7 +10,7 @@ import java.util.concurrent.atomic.AtomicLong;
  * may produce events concurrently. The collector is the bridge between
  * the bytecode-injected event producers and the batch reporter.
  *
- * @author Duuuuuu &lt;1617714380@qq.com&gt;
+ * @author Duuuuuu &lt;1617714380@qq.com&gt; @since 2026-06-01
  */
 public interface EventCollector {
 

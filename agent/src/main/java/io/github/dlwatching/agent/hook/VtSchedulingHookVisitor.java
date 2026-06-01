@@ -6,7 +6,7 @@ import org.objectweb.asm.ClassVisitor;
  * Stub implementation. Full scheduling hooks (park/unpark/mount/unmount) will be
  * implemented in M4.
  *
- * @author Duuuuuu &lt;1617714380@qq.com&gt;
+ * @author Duuuuuu &lt;1617714380@qq.com&gt; @since 2026-06-01
  */
 public class VtSchedulingHookVisitor extends AbstractVtHookVisitor {
 

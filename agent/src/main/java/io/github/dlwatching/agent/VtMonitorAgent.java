@@ -16,7 +16,7 @@ import java.lang.instrument.Instrumentation;
  *   <li>Wires the collector into {@code AbstractVtHookVisitor}'s thread-local</li>
  * </ol>
  *
- * @author Duuuuuu &lt;1617714380@qq.com&gt;
+ * @author Duuuuuu &lt;1617714380@qq.com&gt; @since 2026-06-01
  */
 public final class VtMonitorAgent {
 
