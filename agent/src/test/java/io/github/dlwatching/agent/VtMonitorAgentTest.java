@@ -16,6 +16,7 @@ class VtMonitorAgentTest {
     void shouldReturnNoopCollectorByDefault() {
         EventCollector collector = VtMonitorAgent.getCollector();
         assertThat(collector).isNotNull();
+        assertThat(collector).isSameAs(EventCollector.noop());
     }
 
     @Test

@@ -13,8 +13,18 @@ import org.objectweb.asm.ClassReader;
 import org.objectweb.asm.ClassVisitor;
 import org.objectweb.asm.ClassWriter;
 
+/**
+ * {@link ClassFileTransformer} that instruments {@code java.lang.VirtualThread}
+ * with ASM-based lifecycle and scheduling hook visitors.
+ *
+ * <p>Only classes matching the target internal names are transformed.
+ * All other classes pass through unmodified.
+ */
 public class VtClassFileTransformer implements ClassFileTransformer {
 
+    /**
+     * Set of internal class names that this transformer will instrument.
+     */
     static final Set<String> TARGET_INTERNAL_NAMES = Set.of(
             JdkCompat.virtualThreadInternalName()
     );
@@ -22,6 +32,11 @@ public class VtClassFileTransformer implements ClassFileTransformer {
     private volatile boolean enabled = true;
     private volatile EventCollector collector;
 
+    /**
+     * Creates a transformer with the given event collector.
+     *
+     * @param collector the collector to wire into hook visitors
+     */
     public VtClassFileTransformer(EventCollector collector) {
         this.collector = collector != null ? collector : EventCollector.noop();
     }
@@ -51,6 +66,9 @@ public class VtClassFileTransformer implements ClassFileTransformer {
         }
     }
 
+    /**
+     * Performs the actual ASM transformation on the class bytes.
+     */
     byte[] transformClass(byte[] classBytes) {
         ClassReader cr = new ClassReader(classBytes);
         ClassWriter cw = new ClassWriter(cr, ClassWriter.COMPUTE_MAXS);
@@ -62,18 +80,39 @@ public class VtClassFileTransformer implements ClassFileTransformer {
         return cw.toByteArray();
     }
 
+    /**
+     * Returns whether this transformer is currently enabled.
+     *
+     * @return {@code true} if transformation is active
+     */
     public boolean isEnabled() {
         return enabled;
     }
 
+    /**
+     * Enables or disables class transformation.
+     *
+     * @param enabled {@code true} to enable, {@code false} to disable
+     */
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
     }
 
+    /**
+     * Returns the event collector used by this transformer.
+     *
+     * @return the event collector (never {@code null})
+     */
     public EventCollector getCollector() {
         return collector;
     }
 
+    /**
+     * Replaces the event collector. Existing events in the old collector
+     * are not transferred.
+     *
+     * @param collector the new event collector
+     */
     public void setCollector(EventCollector collector) {
         this.collector = collector != null ? collector : EventCollector.noop();
         AbstractVtHookVisitor.setCollector(this.collector);

@@ -4,9 +4,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import io.github.dlwatching.proto.EventType;
 import io.github.dlwatching.proto.ThreadEvent;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 class EventCollectorTest {
+
+    @BeforeEach
+    void setUp() {
+        EventCollector.resetNoop();
+    }
 
     @Test
     void noopCollectorShouldAcceptEvents() {
@@ -41,8 +47,7 @@ class EventCollectorTest {
     void noopCollectorShouldBeSingleton() {
         EventCollector c1 = EventCollector.noop();
         EventCollector c2 = EventCollector.noop();
-        assertThat(c1).isNotNull();
-        assertThat(c2).isNotNull();
+        assertThat(c1).isSameAs(c2);
     }
 
     @Test

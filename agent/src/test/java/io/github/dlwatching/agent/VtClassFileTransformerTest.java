@@ -58,7 +58,7 @@ class VtClassFileTransformerTest {
     @Test
     void shouldDefaultToNoopCollectorWhenNullGiven() {
         VtClassFileTransformer transformer = new VtClassFileTransformer(null);
-        assertThat(transformer.getCollector()).isNotNull();
+        assertThat(transformer.getCollector()).isSameAs(EventCollector.noop());
     }
 
     @Test

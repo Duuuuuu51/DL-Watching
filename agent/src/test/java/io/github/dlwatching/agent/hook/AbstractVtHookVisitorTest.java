@@ -15,7 +15,7 @@ class AbstractVtHookVisitorTest {
     void shouldReturnNoopCollectorWhenNoneSet() {
         AbstractVtHookVisitor.clearCollector();
         EventCollector collector = AbstractVtHookVisitor.getCollector();
-        assertThat(collector).isNotNull();
+        assertThat(collector).isSameAs(EventCollector.noop());
     }
 
     @Test
@@ -35,7 +35,7 @@ class AbstractVtHookVisitorTest {
         AbstractVtHookVisitor.setCollector(EventCollector.noop());
         AbstractVtHookVisitor.clearCollector();
         EventCollector retrieved = AbstractVtHookVisitor.getCollector();
-        assertThat(retrieved).isNotNull();
+        assertThat(retrieved).isSameAs(EventCollector.noop());
     }
 
     @Test
