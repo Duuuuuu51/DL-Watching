@@ -7,6 +7,9 @@ import io.github.dlwatching.proto.ThreadEvent;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author Duuuuuu <1617714380@qq.com>
+ */
 class EventCollectorTest {
 
     @BeforeEach

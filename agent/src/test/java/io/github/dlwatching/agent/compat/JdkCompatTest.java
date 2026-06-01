@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author Duuuuuu <1617714380@qq.com>
+ */
 class JdkCompatTest {
 
     @Test

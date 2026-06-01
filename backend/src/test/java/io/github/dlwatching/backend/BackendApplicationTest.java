@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.ApplicationContext;
 
+/**
+ * @author Duuuuuu &lt;1617714380@qq.com&gt;
+ */
 @SpringBootTest
 class BackendApplicationTest {
     @Autowired

@@ -9,6 +9,8 @@ import java.util.concurrent.atomic.AtomicLong;
  * <p>Implementations must be thread-safe since multiple virtual threads
  * may produce events concurrently. The collector is the bridge between
  * the bytecode-injected event producers and the batch reporter.
+ *
+ * @author Duuuuuu &lt;1617714380@qq.com&gt;
  */
 public interface EventCollector {
 

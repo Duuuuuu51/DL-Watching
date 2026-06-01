@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  * <p>Spring Boot application with embedded gRPC server for receiving
  * Virtual Thread monitoring data from Java Agents.
+ *
+ * @author Duuuuuu &lt;1617714380@qq.com&gt;
  */
 @SpringBootApplication
 public class BackendApplication {

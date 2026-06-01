@@ -19,6 +19,8 @@ import org.objectweb.asm.ClassWriter;
  *
  * <p>Only classes matching the target internal names are transformed.
  * All other classes pass through unmodified.
+ *
+ * @author Duuuuuu &lt;1617714380@qq.com&gt;
  */
 public class VtClassFileTransformer implements ClassFileTransformer {
 

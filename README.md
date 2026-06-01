@@ -22,40 +22,38 @@ Layer 1: Java Agent (ASM + gRPC)     Layer 2: Backend (Spring Boot)     Layer 3:
 | Language | Java 21 |
 | Bytecode | ASM 9.7 |
 | Serialization | Protobuf 3.25.5 |
-| RPC | gRPC 1.68.0 (bidirectional streaming) |
+| RPC | gRPC 1.68.0 (bidirectional streaming / 双向流) |
 | Backend | Spring Boot 3.2.5 |
 | Storage | ClickHouse + InfluxDB |
 | Test | JUnit 5, AssertJ, Testcontainers |
 
-## Progress / 开发进度
-
-| Module 模块 | Status 状态 | Description 说明 |
-|---|---|---|
-| M1: Project Scaffold / 项目脚手架 | ✅ Complete | Multi-module Maven, Proto definitions, POM configuration |
-| M2: Agent Framework / Agent 框架 | ✅ Complete | JdkCompat, EventCollector, HookVisitor, ClassFileTransformer, Agent premain |
-| M3: Lifecycle Hooks / 生命周期钩子 | ⏳ Pending | VirtualThread create/start/terminate hooks |
-| M4: Scheduling Hooks / 调度钩子 | ⏳ Pending | park/unpark/mount/unmount hooks |
-| M5: Cache & Reporter / 缓存与上报 | ⏳ Pending | RingBuffer, BatchAggregator, GrpcReporter |
-| M6: Backend Gateway / 后端网关 | ⏳ Pending | gRPC auth, rate limiting, circuit breaker |
-| M7: Validation Pipeline / 验证管道 | ⏳ Pending | 3-layer validation, cleaning, transformation |
-| M8: Enrich & EventBus / 丰富与路由 | ⏳ Pending | Window aggregation, event routing |
-| M9: Storage Writers / 存储写入 | ⏳ Pending | ClickHouse + InfluxDB writers |
-| M10: Alert & Analysis / 告警与分析 | ⏳ Pending | Anomaly detection, root cause analysis, deploy |
-
 ## Quick Start / 快速开始
 
 ```bash
-# Build
+# Build / 构建
 JAVA_HOME=/path/to/jdk-21 mvn clean verify
 
-# Run with agent
+# Run with agent / 挂载 Agent 启动
 java -javaagent:agent/target/dl-watching-agent-0.5.0-SNAPSHOT.jar \
      -jar your-application.jar
 
-# Start backend
+# Start backend / 启动后端
 java -jar backend/target/dl-watching-backend-0.5.0-SNAPSHOT.jar
+```
+
+## Project Structure / 项目结构
+
+```
+dl-watching/
+├── proto/       # Protobuf definitions + code generation
+├── agent/       # Java Agent (ASM bytecode enhancement)
+└── backend/     # Spring Boot backend (gRPC gateway + data pipeline)
 ```
 
 ## License / 许可证
 
-Open source under Apache License 2.0.
+Apache License 2.0
+
+## Author / 作者
+
+Duuuuuu <1617714380@qq.com>

@@ -27,6 +27,11 @@ dl-watching/
 └── backend/     # Spring Boot 后端 (gRPC 网关 + 数据处理)
 ```
 
+## 代码规范
+
+- 所有 Java 类必须添加 `@author` 注解：`@author Duuuuuu <1617714380@qq.com>`
+- 放在类 Javadoc 之后、类签名之前
+
 ## 开发流程
 
 - 子代理驱动开发 (Subagent-Driven Development)

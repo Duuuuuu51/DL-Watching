@@ -12,6 +12,8 @@ import org.objectweb.asm.Opcodes;
  * <p>Subclasses implement specific lifecycle or scheduling hook visitors.
  * This base class provides thread-local event collector storage and a
  * static factory for building {@link ThreadEvent} instances.
+ *
+ * @author Duuuuuu &lt;1617714380@qq.com&gt;
  */
 public abstract class AbstractVtHookVisitor extends ClassVisitor {
 

@@ -9,6 +9,8 @@ import java.util.regex.Pattern;
  * <p>Java 21+ is required for virtual threads. This class detects the exact
  * JDK version and provides adapter methods for VM-internal class names
  * that differ across JDK releases.
+ *
+ * @author Duuuuuu &lt;1617714380@qq.com&gt;
  */
 public final class JdkCompat {
 

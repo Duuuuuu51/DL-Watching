@@ -6,6 +6,9 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
+/**
+ * @author Duuuuuu <1617714380@qq.com>
+ */
 class ProtobufSerializationTest {
 
     @Test
