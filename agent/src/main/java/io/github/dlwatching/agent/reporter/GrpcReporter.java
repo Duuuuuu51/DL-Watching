@@ -64,7 +64,7 @@ public class GrpcReporter implements BatchListener {
         this.flushIntervalMs = 3000L;
     }
 
-    GrpcReporter(ManagedChannel channel, String token, String appId, String instanceId) {
+    public GrpcReporter(ManagedChannel channel, String token, String appId, String instanceId) {
         this.backendHost = "test";
         this.backendPort = 0;
         this.token = token;
