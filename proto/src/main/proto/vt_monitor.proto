@@ -1,0 +1,116 @@
+syntax = "proto3";
+
+package dlwatching.proto;
+
+option java_package = "io.github.dlwatching.proto";
+option java_multiple_files = true;
+
+enum EventType {
+  EVENT_TYPE_UNSPECIFIED = 0;
+  CREATED = 1;
+  STARTED = 2;
+  MOUNTED = 3;
+  UNMOUNTED = 4;
+  PARKED = 5;
+  UNPARKED = 6;
+  TERMINATED = 7;
+  HEARTBEAT = 8;
+}
+
+message RegisterRequest {
+  string app_id = 1;
+  string instance_id = 2;
+  string jdk_version = 3;
+  string agent_version = 4;
+  string auth_token = 5;
+}
+
+message RegisterResponse {
+  string session_token = 1;
+  AgentConfig config = 2;
+}
+
+message AgentConfig {
+  int32 batch_size = 1;
+  int32 flush_interval_ms = 2;
+  double sample_rate = 3;
+  bool hook_enabled = 4;
+  string log_level = 5;
+}
+
+message StackFrame {
+  string class_name = 1;
+  string method_name = 2;
+  string file_name = 3;
+  int32 line_number = 4;
+}
+
+message ThreadEvent {
+  EventType type = 1;
+  int64 thread_id = 2;
+  string thread_name = 3;
+  int64 timestamp_ms = 4;
+  string carrier_thread = 5;
+  int64 duration_us = 6;
+  string reason = 7;
+  StackFrame caller = 8;
+}
+
+message EventBatch {
+  string app_id = 1;
+  string instance_id = 2;
+  int64 batch_seq = 3;
+  int64 timestamp_ms = 4;
+  repeated ThreadEvent events = 5;
+}
+
+message ThreadQueryParams {
+  int64 thread_id = 1;
+  string app_id = 2;
+}
+
+message ThreadQueryResult {
+  int64 thread_id = 1;
+  string thread_name = 2;
+  string state = 3;
+  int64 created_at_ms = 4;
+  repeated StackFrame stack_frames = 5;
+}
+
+message ControlCommand {
+  CommandType type = 1;
+  string command_id = 2;
+  oneof payload {
+    AgentConfig new_config = 3;
+    ThreadQueryParams query_params = 4;
+  }
+  enum CommandType {
+    ACK = 0;
+    SLOW_DOWN = 1;
+    SPEED_UP = 2;
+    QUERY_THREAD = 3;
+    DUMP_THREADS = 4;
+    UPDATE_CONFIG = 5;
+  }
+}
+
+message HeartbeatRequest {
+  string app_id = 1;
+  string instance_id = 2;
+  string session_token = 3;
+  int64 timestamp_ms = 4;
+  int64 collected_count = 5;
+  int64 dropped_count = 6;
+  int64 sent_count = 7;
+}
+
+message HeartbeatResponse {
+  int64 server_timestamp_ms = 1;
+  AgentConfig updated_config = 2;
+}
+
+service VirtualThreadMonitor {
+  rpc Register(RegisterRequest) returns (RegisterResponse);
+  rpc Report(stream EventBatch) returns (stream ControlCommand);
+  rpc Heartbeat(HeartbeatRequest) returns (HeartbeatResponse);
+}

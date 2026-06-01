@@ -1,0 +1,20 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: dl-watching-backend
+grpc:
+  server:
+    port: 9090
+    enable-keep-alive: true
+    keep-alive-time: 30s
+    keep-alive-timeout: 10s
+    max-inbound-message-size: 4194304
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
