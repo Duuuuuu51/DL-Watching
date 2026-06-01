@@ -13,5 +13,6 @@ Thumbs.db
 *.swp
 *~
 .worktrees/
+docs
 CLAUDE.md
 **/test/
