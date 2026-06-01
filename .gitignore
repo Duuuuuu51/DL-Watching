@@ -14,4 +14,4 @@ Thumbs.db
 *~
 .worktrees/
 CLAUDE.md
-test/
+**/test/
